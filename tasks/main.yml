@@ -105,8 +105,8 @@
   become: yes
   file:
     path: "{{ nomad_config_dir }}"
-    owner: root
-    group: root
+    owner: "{{ nomad_operator_user }}"
+    group: "{{ nomad_operator_user }}"
     mode: 0755
     state: directory
   tags:
@@ -128,8 +128,8 @@
   template:
     src: nomad.conf.j2
     dest: /etc/init/nomad.conf
-    owner: root
-    group: root
+    owner: "{{ nomad_operator_user }}"
+    group: "{{ nomad_operator_user }}"
     mode: 0644
   notify:
     - restart nomad
@@ -141,8 +141,8 @@
   template:
     src: nomad.hcl.j2
     dest: "{{ nomad_config_dir }}/nomad.hcl"
-    owner: root
-    group: root
+    owner: "{{ nomad_operator_user }}"
+    group: "{{ nomad_operator_user }}"
     mode: 0644
   notify:
     - restart nomad
@@ -154,8 +154,8 @@
   template:
     src: server.hcl.j2
     dest: "{{ nomad_config_dir }}/server.hcl"
-    owner: root
-    group: root
+    owner: "{{ nomad_operator_user }}"
+    group: "{{ nomad_operator_user }}"
     mode: 0644
   notify:
     - restart nomad
@@ -168,8 +168,8 @@
   template:
     src: client.hcl.j2
     dest: "{{ nomad_config_dir }}/client.hcl"
-    owner: root
-    group: root
+    owner: "{{ nomad_operator_user }}"
+    group: "{{ nomad_operator_user }}"
     mode: 0644
   notify:
     - restart nomad
@@ -182,8 +182,8 @@
   template:
     src: atlas.hcl.j2
     dest: "{{ nomad_config_dir }}/atlas.hcl"
-    owner: root
-    group: root
+    owner: "{{ nomad_operator_user }}"
+    group: "{{ nomad_operator_user }}"
     mode: 0644
   notify:
     - restart nomad
