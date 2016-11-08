@@ -90,7 +90,10 @@
     - nomad
 
 - name: Unzip Nomad to installation directory
-  command: unzip {{ nomad_download_dir }}/nomad.zip -d {{ nomad_install_dir }}
+  unarchive: src={{ nomad_download_dir }}/nomad.zip
+             dest={{ nomad_install_dir }}
+             mode=0770
+             copy=no
   args:
     creates: "{{ nomad_install_dir }}/nomad"
   tags:
