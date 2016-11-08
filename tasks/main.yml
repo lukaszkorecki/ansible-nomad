@@ -68,7 +68,6 @@
     - nomad
 
 - name: Download Nomad
-  become: yes
   get_url:
     url: "{{ nomad_url }}"
     dest: "{{ nomad_download_dir }}/nomad.zip"
@@ -77,7 +76,6 @@
     - nomad
 
 - name: Remove Nomad files if version is different
-  become: yes
   file:
     path: "{{ item }}"
     state: absent
@@ -92,7 +90,6 @@
     - nomad
 
 - name: Unzip Nomad to installation directory
-  become: yes
   command: unzip {{ nomad_download_dir }}/nomad.zip -d {{ nomad_install_dir }}
   args:
     creates: "{{ nomad_install_dir }}/nomad"
