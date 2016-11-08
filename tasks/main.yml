@@ -72,6 +72,8 @@
     url: "{{ nomad_url }}"
     dest: "{{ nomad_download_dir }}/nomad.zip"
     sha256sum: "{{ nomad_sha256sum }}"
+    owner: "{{ lookup('env', 'USER') }}"
+    group: "{{ lookup('env', 'USER') }}"
   tags:
     - nomad
 
