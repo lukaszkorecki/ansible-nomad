@@ -87,8 +87,14 @@ disable_anonymous_signature = false
 {% if nomad_consul_enable %}
 consul {
   address = "{{ nomad_consul_address }}"
+
+{% if nomad_consul_auth %}
   auth = "{{ nomad_consul_auth }}"
+{% endif %}
+
+{% if nomad_consul_token %}
   token = "{{ nomad_consul_token }}"
+{% endif %}
 }
 
 {% endif %}
